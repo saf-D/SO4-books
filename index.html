@@ -2,6 +2,12 @@
 <html lang="zh-hans">
 
 <head>
+    <meta name="viewport" content="width=device-width,initial-scale=1,
+		minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <!--引入CSS代码-->
+    <link rel="stylesheet" type="text/css" href="..static/css/lunbo.css" />
+    <!--引入Js代码-->
+    <script src="..static/js/lunbo.js"></script>
     <!--顶部加载条-->
     <link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.css">
     <script src="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.js"></script>
@@ -33,7 +39,7 @@
     <meta name="keywords" content="SO4-books">
     <meta name="format-detection" content="telephone=no">
     <link rel="shortcut icon" href="../imgs/logo.png">
-    <link rel="stylesheet" href="static/css/index.css">
+    <link rel="stylesheet" href="..static/css/index.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.fancybox@2.1.5/source/jquery.fancybox.css">
     <script type="text/javascript">
@@ -95,55 +101,37 @@
 </head>
 
 <body>
-    <style>
-        body {
-            height: 3000px;
-        }
-        #logo {
-            background-color: rgb(129, 192, 242);
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            text-align: center;
-            width: 90px;
-            height: 90px;
-            line-height: 90px;
-            color: #fff;
-            border-radius: 50%;
-            display: none;
-            cursor: pointer;
-        }
-        #logo:hover {
-            background-color: rgb(45, 150, 233);
-        }
-        #top {
-            text-align: center;
-            width: 100%;
-            background-color: #f3f3f3;
-            padding: 20px 0;
-        }
-    </style>
-    <script>
-        var oDiv = document.getElementById('logo');
-        window.onscroll = function () {
-            oDiv.style.display = 'block';
-            var height = document.documentElement.scrollTop || document.body.scrollTop;
-            console.log(height);
-            if (height == 0) {
-                oDiv.style.display = 'none';
-            }
-        }
-        var oDiv = document.getElementById('logo');
-        window.onscroll = function () {
-            oDiv.style.display = 'block';
-            var height = document.documentElement.scrollTop || document.body.scrollTop;
-            console.log(height);
-            if (height == 0) {
-                oDiv.style.display = 'none';
-            }
-        }
-    </script>
-    <div id="logo">返回顶部</div>
+    <div id="top" class="lunbo">
+        <div class="content">
+        <ul id="item">
+            <li class="item">
+                <a href="#"><img src="../imgs/read1.png" ></a>
+            </li>
+            <li class="item">
+                <a href="#"><img src="../imgs/read2.png" ></a>
+            </li>
+            <li class="item">
+                <a href="#"><img src="../imgs/read3.png" ></a>
+            </li>
+            <li class="item">
+                <a href="#"><img src="../imgs/read4.png" ></a>
+            </li>
+            <li class="item">
+                <a href="#"><img src="../imgs/read.webp" ></a>
+            </li>
+        </ul>
+        <div id="btn-left"><</div>
+        <div id="btn-right">></div>
+        <ul id="circle">
+            
+            <li class="circle"></li>
+            <li class="circle"></li>
+            <li class="circle"></li>
+            <li class="circle"></li>
+            <li class="circle"></li>
+        </ul>
+        </div>
+    </div>
     <div id="body-wrap">
         <nav class="not_index_bg" id="nav" style="background-image:url(https://api.ixiaowai.cn/api/api.php)">
             <div id="page_site-info">
