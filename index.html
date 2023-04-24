@@ -18,9 +18,55 @@
             alert('朋友，上古浏览器不支持呢~');
         }
     </script>
+    <style>
+        .box {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            height: 30px;
+            width: 50px;
+            text-align: center;
+            padding-top: 20px;
+            background-color: lightblue;
+            border-radius: 20%;
+            overflow: hidden;
+        }
+
+        .box:hover:before {
+            top: 50%
+        }
+
+        .box:hover .box-in {
+            visibility: hidden;
+        }
+
+        .box:before {
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            content: 'UP↑';
+            width: 40px;
+            color: peru;
+            font-weight: bold;
+        }
+
+        .box-in {
+            visibility: visible;
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            border: 3px solid black;
+            border-color: white transparent transparent white;
+            transform: rotate(45deg);
+        }
+    </style>
 </head>
 
-<body>
+<body style="height:2000px;">
+    <div id="box" class="box">
+        <div class="box-in"></div>
+    </div>
     <div id="body-wrap">
         <nav class="not_index_bg" id="nav" style="background-image:url(https://api.ixiaowai.cn/api/api.php)">
             <div id="page_site-info">
@@ -29,7 +75,7 @@
                     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11"></script>
                     <script>
                         var typed = new Typed(".blogtitle", {
-                            strings: ['「 只顾着追求新事物，却不回顾历史，怎么会有未来。 」', '如果不能忠于自己的心，胜负又有什么价值呢？','快来SO4读书吧!'],
+                            strings: ['「 只顾着追求新事物，却不回顾历史，怎么会有未来。 」', '如果不能忠于自己的心，胜负又有什么价值呢？', '快来SO4读书吧!'],
                             startDelay: 300,
                             typeSpeed: 100,
                             loop: true,
@@ -46,9 +92,7 @@
                     <div class="card-widget card-info">
                         <div class="card-content">
                             <div class="card-info-avatar is-center">
-                                <img class="avatar-img"
-                                    src="../imgs/logo.png"
-                                    alt="avatar">
+                                <img class="avatar-img" src="../imgs/logo.png" alt="avatar">
                                 <div class="author-info__name">SO4-books</div>
                                 <div class="author-info__description">快来看书吧！</div>
                             </div>
@@ -114,9 +158,7 @@
                     <div class="card-widget card-info">
                         <div class="card-content">
                             <div class="card-info-avatar is-center">
-                                <img class="avatar-img"
-                                    src="../imgs/wechat.jpg"
-                                    alt="avatar">
+                                <img class="avatar-img" src="../imgs/wechat.jpg" alt="avatar">
                                 <div class="author-info__name">赞赏</div>
                                 <div class="author-info__description">请我喝一杯冰可乐吧! </div>
                             </div>
@@ -131,10 +173,10 @@
 
                 <article id="page">
                     <div class="article-container">
-                        <h2><div id="A">A. 模块导航</div></h2>
+                        <h2>
+                            <div id="A">A. 模块导航</div>
+                        </h2>
                         <div class="tool">
-                            <li><a href="#top" target="_self">TOP. 顶部标语</a></li>
-                            <br>
                             <li><a href="#A" target="_self">A. 模块导航</a></li>
                             <br>
                             <li><a href="#B" target="_self">B. 书籍类型</a></li>
@@ -151,7 +193,9 @@
                             <br>
                         </div>
                         <hr>
-                        <h2><div id="B">B. 书籍类型</div><a href="../classification.html">『点击我查看分类』</a></h2>
+                        <h2>
+                            <div id="B">B. 书籍类型</div><a href="../classification.html">『点击我查看分类』</a>
+                        </h2>
                         <div class="skillbox">
                             <div class="skillbar">
                                 <div class="skillbar-title"
@@ -205,31 +249,44 @@
                         </div>
                         <hr>
 
-                        <h2><div id="C">C. 备用网站</div></h2>
+                        <h2>
+                            <div id="C">C. 备用网站</div>
+                        </h2>
                         <div class="tool">
-                            <li><a href="https://so4-books.pages.dev/">超级推荐『Cloudflare』https://so4-books.pages.dev/</a></li>
+                            <li><a href="https://so4-books.pages.dev/">超级推荐『Cloudflare』https://so4-books.pages.dev/</a>
+                            </li>
                             <br>
-                            <li><a href="https://so4-books.netlify.app/">比较推荐『Netlify』https://so4-books.netlify.app/</a></li>
+                            <li><a href="https://so4-books.netlify.app/">比较推荐『Netlify』https://so4-books.netlify.app/</a>
+                            </li>
                             <br>
-                            <li><a href="https://so4-books.vercel.app/">不太推荐『Vercel』https://so4-books.vercel.app/</a></li>
+                            <li><a href="https://so4-books.vercel.app/">不太推荐『Vercel』https://so4-books.vercel.app/</a>
+                            </li>
                             <br>
-                            <li><a href="https://so4-git-main-saf-d.vercel.app/">并不推荐『Vercel』https://so4-git-main-saf-d.vercel.app/</a></li>
+                            <li><a
+                                    href="https://so4-git-main-saf-d.vercel.app/">并不推荐『Vercel』https://so4-git-main-saf-d.vercel.app/</a>
+                            </li>
                             <br>
                             <li><a href="https://so4-two.vercel.app/">并不推荐『Vercel』https://so4-two.vercel.app/</a></li>
                             <br>
-                            <li><a href="https://so4-saf-d.vercel.app/">并不推荐『Vercel』https://so4-saf-d.vercel.app/</a></li>
+                            <li><a href="https://so4-saf-d.vercel.app/">并不推荐『Vercel』https://so4-saf-d.vercel.app/</a>
+                            </li>
                             <br>
                             <p>想要查看往期版本? 以后会添加这个功能! </p>
                         </div>
 
                         <hr>
-                        <h2><div id="D">D. 联系一下</div></h2>
+                        <h2>
+                            <div id="D">D. 联系一下</div>
+                        </h2>
                         <div class="tool">
-                            <i class="fa fa-github"></i>&nbsp&nbsp<a href="https://github.com/saf-D" target="_blank">My GitHub</a>
+                            <i class="fa fa-github"></i>&nbsp&nbsp<a href="https://github.com/saf-D" target="_blank">My
+                                GitHub</a>
                         </div>
 
                         <hr>
-                        <h2><div id="E">E. 快捷导航</div></h2>
+                        <h2>
+                            <div id="E">E. 快捷导航</div>
+                        </h2>
                         <div class="tool">
                             <a href="http://so4-home.ezyro.com/" target="_blank" rel="noopener noreferrer">导航</a>
                             <a href="http://so4-bbs.unaux.com/" target="_blank" rel="noopener noreferrer">论坛(准备重载)</a>
@@ -237,16 +294,22 @@
                         </div>
 
                         <hr>
-                        <h2><div id="F">F. 音乐系统</div></h2>
+                        <h2>
+                            <div id="F">F. 音乐系统</div>
+                        </h2>
                         <div class="tool">
-                            <iframe width="800" height="100" src="https://music.163.com/outchain/player?type=2&amp;id=1965912564&amp;height=66"></iframe>
-                            <iframe width="800" height="100" src="https://music.163.com/outchain/player?type=2&amp;id=1929385483"></iframe>
+                            <iframe width="800" height="100"
+                                src="https://music.163.com/outchain/player?type=2&amp;id=1965912564&amp;height=66"></iframe>
+                            <iframe width="800" height="100"
+                                src="https://music.163.com/outchain/player?type=2&amp;id=1929385483"></iframe>
                         </div>
 
                         <hr>
-                        
 
-                        <h2><div id="G">G. 开发列表</div></h2>
+
+                        <h2>
+                            <div id="G">G. 开发列表</div>
+                        </h2>
                         <div class="tool">
                             <ul>
                                 <li>顶部标语增加多样性</li>
@@ -269,7 +332,7 @@
                                 <br>
                                 <li>更新内容展示</li>
                                 <br>
-                                <li>一键回到顶部</li>
+                                <li><del>一键回到顶部</del></li>
                                 <br>
                                 <li><del>页面模块导航</del></li>
                                 <br>
@@ -332,7 +395,11 @@
 
         (function ($) {
             $.fn.snow = function (options) {
-                var $flake = $('<div id="snowbox" />').css({ 'position': 'absolute', 'z-index': '9999', 'top': '-50px' }).html('&#10052;'),
+                var $flake = $('<div id="snowbox" />').css({
+                        'position': 'absolute',
+                        'z-index': '9999',
+                        'top': '-50px'
+                    }).html('&#10052;'),
                     documentHeight = $(document).height(),
                     documentWidth = $(document).width(),
                     defaults = {
@@ -366,9 +433,11 @@
         })(jQuery);
         $(function () {
             $.fn.snow({
-                minSize: 5, /* 定义雪花最小尺寸 */
-                maxSize: 50,/* 定义雪花最大尺寸 */
-                newOn: 800  /* 定义密集程度，数字越小越密集 */
+                minSize: 5,
+                /* 定义雪花最小尺寸 */
+                maxSize: 50,
+                /* 定义雪花最大尺寸 */
+                newOn: 800 /* 定义密集程度，数字越小越密集 */
             });
         });
 
@@ -394,6 +463,21 @@
 
 
         */
+    </script>
+    <script>
+        var timer = null;
+        box.onclick = function () {
+            cancelAnimationFrame(timer);
+            timer = requestAnimationFrame(function fn() {
+                var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+                if (oTop > 0) {
+                    document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+                    timer = requestAnimationFrame(fn);
+                } else {
+                    cancelAnimationFrame(timer);
+                }
+            });
+        }
     </script>
 </body>
 
