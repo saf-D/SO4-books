@@ -18,6 +18,7 @@
             alert('朋友，上古浏览器不支持呢~');
         }
     </script>
+    <!-- 一键回到顶部 -->
     <style>
         .box {
             position: fixed;
@@ -61,9 +62,24 @@
             transform: rotate(45deg);
         }
     </style>
+    <script>
+        var timer = null;
+        box.onclick = function () {
+            cancelAnimationFrame(timer);
+            timer = requestAnimationFrame(function fn() {
+                var oTop = document.body.scrollTop || document.documentElement.scrollTop;
+                if (oTop > 0) {
+                    document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
+                    timer = requestAnimationFrame(fn);
+                } else {
+                    cancelAnimationFrame(timer);
+                }
+            });
+        }
+    </script>
 </head>
-
-<body style="height:2000px;">
+<!-- style="height:2000px;" -->
+<body>
     <div id="box" class="box">
         <div class="box-in"></div>
     </div>
@@ -464,21 +480,6 @@
 
 
         */
-    </script>
-    <script>
-        var timer = null;
-        box.onclick = function () {
-            cancelAnimationFrame(timer);
-            timer = requestAnimationFrame(function fn() {
-                var oTop = document.body.scrollTop || document.documentElement.scrollTop;
-                if (oTop > 0) {
-                    document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
-                    timer = requestAnimationFrame(fn);
-                } else {
-                    cancelAnimationFrame(timer);
-                }
-            });
-        }
     </script>
 </body>
 
