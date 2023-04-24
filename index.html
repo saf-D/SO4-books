@@ -27,6 +27,50 @@
             alert('朋友，上古浏览器不支持呢~');
         }
     </script>
+    <!-- 一键回到顶部 -->
+    <style>
+        .box {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            height: 30px;
+            width: 50px;
+            text-align: center;
+            padding-top: 20px;
+            background-color: lightblue;
+            border-radius: 20%;
+            overflow: hidden;
+        }
+
+        .box:hover:before {
+            top: 50%
+        }
+
+        .box:hover .box-in {
+            visibility: hidden;
+        }
+
+        .box:before {
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            content: 'UP↑';
+            width: 40px;
+            color: peru;
+            font-weight: bold;
+        }
+
+        .box-in {
+            visibility: visible;
+            display: inline-block;
+            height: 20px;
+            width: 20px;
+            border: 3px solid black;
+            border-color: white transparent transparent white;
+            transform: rotate(45deg);
+        }
+    </style>
     <!-- Music-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.0/dist/APlayer.min.css">
     <script src="https://blog-static.cnblogs.com/files/zouwangblog/APlayer.min.js"></script>
