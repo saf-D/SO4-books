@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="zh-hans">
-
 <head>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
+    <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -63,8 +64,9 @@
             transform: rotate(45deg);
         }
     </style>
-    
+
 </head>
+
 <body>
     <div id="box" class="box">
         <div class="box-in"></div>
@@ -323,7 +325,7 @@
                                 <br>
                                 <li>往期网站版本列表</li>
                                 <br>
-                                <li>雪花只在冬季返场</li>
+                                <li>更新内容展示</li>
                                 <br>
                                 <li>滚动公告</li>
                                 <br>
@@ -335,9 +337,9 @@
                                 <br>
                                 <li>更好看的主题</li>
                                 <br>
-                                <li>更新内容展示</li>
+                                <li>一键<del>回到顶部</del><b>(不知道为什么会失效qwq, 这个bug正在努力修复, 在VS中明明都可以正常工作啊......)</b></li>
                                 <br>
-                                <li>一键<del>回到顶部</del><b>(不知道为什么会失效qwq, 这个bug正在努力修复, 在VS中都可以正常工作啊......)</b></li>
+                                <li><del>雪花只在冬季返场</del></li>
                                 <br>
                                 <li><del>页面模块导航</del></li>
                                 <br>
@@ -398,13 +400,29 @@
         console.log("%c 有朋自远方来, 不亦说乎.", "background:#24272A; color:#ffffff", "");
 
 
+        function getTime() {
+        var date = new Date();
+        var year = date.getFullYear(); //获取年份
+        var month = date.getMonth() + 1; //获取月份
+        var day = date.getDate(); //获取日期
+        var hour = date.getHours(); //获取小时
+        hour = hour < 10 ? '0' + hour : hour;
+        var minute = date.getMinutes(); // 获取分
+        minute = minute < 10 ? '0' + minute : minute;
+        var seconds = date.getSeconds(); //获取秒
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        if (month == 12 || month == 11 || month == 1 || month == 2) {
+            return 1;
+        }
+    }
+    if (getTime() == 1) {
         (function ($) {
             $.fn.snow = function (options) {
                 var $flake = $('<div id="snowbox" />').css({
                         'position': 'absolute',
                         'z-index': '9999',
                         'top': '-50px'
-                    }).html('&#10052;'),
+                    }).html('❄'),
                     documentHeight = $(document).height(),
                     documentWidth = $(document).width(),
                     defaults = {
@@ -442,9 +460,10 @@
                 /* 定义雪花最小尺寸 */
                 maxSize: 50,
                 /* 定义雪花最大尺寸 */
-                newOn: 800 /* 定义密集程度，数字越小越密集 */
+                newOn: 300 /* 定义密集程度，数字越小越密集 */
             });
         });
+    }
 
         // 浏览器搞笑标题
         /*大可不必
@@ -485,4 +504,5 @@
         });
     }
 </script>
+
 </html>
