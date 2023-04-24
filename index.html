@@ -1,11 +1,10 @@
 <!DOCTYPE html>
 <html lang="zh-hans">
-
 <head>
     <!--顶部加载条-->
     <link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.css">
     <script src="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.js"></script>
-    <script>
+    <script type="text/javascript" >
         NProgress.start();
         NProgress.done();
         const pageProgressBar = document.querySelector(".progress-bar")
@@ -14,9 +13,7 @@
                 (scrollContainer().scrollTop /
                     (scrollContainer().scrollHeight - scrollContainer().clientHeight)) *
                 100;
-
             pageProgressBar.style.width = `${scrolledPercentage}%`
-
             if (scrollContainer().scrollTop > showOnPx) {
                 backToTopButton.classList.remove("hidden");
             } else {
@@ -45,14 +42,6 @@
     </script>
     <!-- 一键回到顶部 -->
     <style>
-        .progress-bar {
-            height: 1rem;
-            background: white;
-            position: fixed;
-            top: 0;
-            left: 0;
-        }
-
         .box {
             position: fixed;
             right: 10px;
@@ -108,7 +97,6 @@
     <div id="box" class="box">
         <div class="box-in"></div>
     </div>
-    <div class="progress-bar" />
     <div id="body-wrap">
         <nav class="not_index_bg" id="nav" style="background-image:url(https://api.ixiaowai.cn/api/api.php)">
             <div id="page_site-info">
@@ -145,7 +133,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="card-widget card-announcement">
                         <div class="card-content">
                             <div class="item-headline">
@@ -157,7 +144,6 @@
                             <p>本站每隔1周更新一次, 有问题请联系邮箱dkx11111@163.com, 谢谢! </p>
                         </div>
                     </div>
-
                     <div class="card-widget card-announcement">
                         <div class="card-content">
                             <div class="item-headline">
@@ -449,7 +435,7 @@
             minute = minute < 10 ? '0' + minute : minute;
             var seconds = date.getSeconds(); //获取秒
             seconds = seconds < 10 ? '0' + seconds : seconds;
-            if (month == 12 || month == 11 || month == 1 || month == 2) {
+            if (month == 12 || month == 11 || month == 1 || month == 2) { //设定1、2、11、12月下雪
                 return 1;
             }
         }
@@ -527,7 +513,7 @@
         */
     </script>
 </body>
-<script>
+<script type="text/javascript" >
     var timer = null;
     box.onclick = function () {
         cancelAnimationFrame(timer);
