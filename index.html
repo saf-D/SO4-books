@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-hans">
+
 <head>
+    <!--顶部加载条-->
+    <link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.css">
+    <script src="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.js"></script>
+    <script>
+        NProgress.start();
+        NProgress.done();
+    </script>
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
@@ -401,69 +409,69 @@
 
 
         function getTime() {
-        var date = new Date();
-        var year = date.getFullYear(); //获取年份
-        var month = date.getMonth() + 1; //获取月份
-        var day = date.getDate(); //获取日期
-        var hour = date.getHours(); //获取小时
-        hour = hour < 10 ? '0' + hour : hour;
-        var minute = date.getMinutes(); // 获取分
-        minute = minute < 10 ? '0' + minute : minute;
-        var seconds = date.getSeconds(); //获取秒
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        if (month == 12 || month == 11 || month == 1 || month == 2) {
-            return 1;
+            var date = new Date();
+            var year = date.getFullYear(); //获取年份
+            var month = date.getMonth() + 1; //获取月份
+            var day = date.getDate(); //获取日期
+            var hour = date.getHours(); //获取小时
+            hour = hour < 10 ? '0' + hour : hour;
+            var minute = date.getMinutes(); // 获取分
+            minute = minute < 10 ? '0' + minute : minute;
+            var seconds = date.getSeconds(); //获取秒
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+            if (month == 12 || month == 11 || month == 1 || month == 2) {
+                return 1;
+            }
         }
-    }
-    if (getTime() == 1) {
-        (function ($) {
-            $.fn.snow = function (options) {
-                var $flake = $('<div id="snowbox" />').css({
-                        'position': 'absolute',
-                        'z-index': '9999',
-                        'top': '-50px'
-                    }).html('❄'),
-                    documentHeight = $(document).height(),
-                    documentWidth = $(document).width(),
-                    defaults = {
-                        minSize: 10,
-                        maxSize: 20,
-                        newOn: 1000,
-                        flakeColor: "#AFDAEF" /* 此处可以定义雪花颜色，若要白色可以改为#FFFFFF */
-                    },
-                    options = $.extend({}, defaults, options);
-                var interval = setInterval(function () {
-                    var startPositionLeft = Math.random() * documentWidth - 100,
-                        startOpacity = 0.5 + Math.random(),
-                        sizeFlake = options.minSize + Math.random() * options.maxSize,
-                        endPositionTop = documentHeight - 200,
-                        endPositionLeft = startPositionLeft - 500 + Math.random() * 500,
-                        durationFall = documentHeight * 10 + Math.random() * 5000;
-                    $flake.clone().appendTo('body').css({
-                        left: startPositionLeft,
-                        opacity: startOpacity,
-                        'font-size': sizeFlake,
-                        color: options.flakeColor
-                    }).animate({
-                        top: endPositionTop,
-                        left: endPositionLeft,
-                        opacity: 0.2
-                    }, durationFall, 'linear', function () {
-                        $(this).remove()
-                    });
-                }, options.newOn);
-            };
-        })(jQuery);
-        $(function () {
-            $.fn.snow({
-                minSize: 5,
-                /* 定义雪花最小尺寸 */
-                maxSize: 50,
-                /* 定义雪花最大尺寸 */
-                newOn: 300 /* 定义密集程度，数字越小越密集 */
+        if (getTime() == 1) {
+            (function ($) {
+                $.fn.snow = function (options) {
+                    var $flake = $('<div id="snowbox" />').css({
+                            'position': 'absolute',
+                            'z-index': '9999',
+                            'top': '-50px'
+                        }).html('❄'),
+                        documentHeight = $(document).height(),
+                        documentWidth = $(document).width(),
+                        defaults = {
+                            minSize: 10,
+                            maxSize: 20,
+                            newOn: 1000,
+                            flakeColor: "#AFDAEF" /* 此处可以定义雪花颜色，若要白色可以改为#FFFFFF */
+                        },
+                        options = $.extend({}, defaults, options);
+                    var interval = setInterval(function () {
+                        var startPositionLeft = Math.random() * documentWidth - 100,
+                            startOpacity = 0.5 + Math.random(),
+                            sizeFlake = options.minSize + Math.random() * options.maxSize,
+                            endPositionTop = documentHeight - 200,
+                            endPositionLeft = startPositionLeft - 500 + Math.random() * 500,
+                            durationFall = documentHeight * 10 + Math.random() * 5000;
+                        $flake.clone().appendTo('body').css({
+                            left: startPositionLeft,
+                            opacity: startOpacity,
+                            'font-size': sizeFlake,
+                            color: options.flakeColor
+                        }).animate({
+                            top: endPositionTop,
+                            left: endPositionLeft,
+                            opacity: 0.2
+                        }, durationFall, 'linear', function () {
+                            $(this).remove()
+                        });
+                    }, options.newOn);
+                };
+            })(jQuery);
+            $(function () {
+                $.fn.snow({
+                    minSize: 5,
+                    /* 定义雪花最小尺寸 */
+                    maxSize: 50,
+                    /* 定义雪花最大尺寸 */
+                    newOn: 300 /* 定义密集程度，数字越小越密集 */
+                });
             });
-        });
-    }
+        }
 
         // 浏览器搞笑标题
         /*大可不必
