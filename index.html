@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="zh-hans">
+
 <head>
     <!--顶部加载条-->
     <link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.css">
     <script src="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.js"></script>
-    <script type="text/javascript" >
+    <script type="text/javascript">
         NProgress.start();
         NProgress.done();
         const pageProgressBar = document.querySelector(".progress-bar")
@@ -94,9 +95,55 @@
 </head>
 
 <body>
-    <div id="box" class="box">
-        <div class="box-in"></div>
-    </div>
+    <style>
+        body {
+            height: 3000px;
+        }
+        #logo {
+            background-color: rgb(129, 192, 242);
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            text-align: center;
+            width: 90px;
+            height: 90px;
+            line-height: 90px;
+            color: #fff;
+            border-radius: 50%;
+            display: none;
+            cursor: pointer;
+        }
+        #logo:hover {
+            background-color: rgb(45, 150, 233);
+        }
+        #top {
+            text-align: center;
+            width: 100%;
+            background-color: #f3f3f3;
+            padding: 20px 0;
+        }
+    </style>
+    <script>
+        var oDiv = document.getElementById('logo');
+        window.onscroll = function () {
+            oDiv.style.display = 'block';
+            var height = document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(height);
+            if (height == 0) {
+                oDiv.style.display = 'none';
+            }
+        }
+        var oDiv = document.getElementById('logo');
+        window.onscroll = function () {
+            oDiv.style.display = 'block';
+            var height = document.documentElement.scrollTop || document.body.scrollTop;
+            console.log(height);
+            if (height == 0) {
+                oDiv.style.display = 'none';
+            }
+        }
+    </script>
+    <div id="logo">返回顶部</div>
     <div id="body-wrap">
         <nav class="not_index_bg" id="nav" style="background-image:url(https://api.ixiaowai.cn/api/api.php)">
             <div id="page_site-info">
@@ -513,7 +560,7 @@
         */
     </script>
 </body>
-<script type="text/javascript" >
+<script type="text/javascript">
     var timer = null;
     box.onclick = function () {
         cancelAnimationFrame(timer);
