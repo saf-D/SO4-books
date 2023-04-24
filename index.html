@@ -5,29 +5,9 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,
 		minimum-scale=1,maximum-scale=1,user-scalable=no" />
     <!--引入CSS代码-->
-    <link rel="stylesheet" type="text/css" href="..static/css/lunbo.css" />
+    <link rel="stylesheet" type="text/css" href="../static/css/lunbo.css" />
     <!--引入Js代码-->
-    <script src="..static/js/lunbo.js"></script>
-    <!--顶部加载条-->
-    <link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.css">
-    <script src="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.js"></script>
-    <script type="text/javascript">
-        NProgress.start();
-        NProgress.done();
-        const pageProgressBar = document.querySelector(".progress-bar")
-        document.addEventListener("scroll", () => {
-            const scrolledPercentage =
-                (scrollContainer().scrollTop /
-                    (scrollContainer().scrollHeight - scrollContainer().clientHeight)) *
-                100;
-            pageProgressBar.style.width = `${scrolledPercentage}%`
-            if (scrollContainer().scrollTop > showOnPx) {
-                backToTopButton.classList.remove("hidden");
-            } else {
-                backToTopButton.classList.add("hidden");
-            }
-        });
-    </script>
+    <script src="../static/js/lunbo.js"></script>
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.js"></script>
     <script type="text/javascript" src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
     <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.4/jquery.js"></script>
@@ -47,50 +27,6 @@
             alert('朋友，上古浏览器不支持呢~');
         }
     </script>
-    <!-- 一键回到顶部 -->
-    <style>
-        .box {
-            position: fixed;
-            right: 10px;
-            bottom: 10px;
-            height: 30px;
-            width: 50px;
-            text-align: center;
-            padding-top: 20px;
-            background-color: lightblue;
-            border-radius: 20%;
-            overflow: hidden;
-        }
-
-        .box:hover:before {
-            top: 50%
-        }
-
-        .box:hover .box-in {
-            visibility: hidden;
-        }
-
-        .box:before {
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            content: 'UP↑';
-            width: 40px;
-            color: peru;
-            font-weight: bold;
-        }
-
-        .box-in {
-            visibility: visible;
-            display: inline-block;
-            height: 20px;
-            width: 20px;
-            border: 3px solid black;
-            border-color: white transparent transparent white;
-            transform: rotate(45deg);
-        }
-    </style>
     <!-- Music-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer@1.10.0/dist/APlayer.min.css">
     <script src="https://blog-static.cnblogs.com/files/zouwangblog/APlayer.min.js"></script>
@@ -548,20 +484,5 @@
         */
     </script>
 </body>
-<script type="text/javascript">
-    var timer = null;
-    box.onclick = function () {
-        cancelAnimationFrame(timer);
-        timer = requestAnimationFrame(function fn() {
-            var oTop = document.body.scrollTop || document.documentElement.scrollTop;
-            if (oTop > 0) {
-                document.body.scrollTop = document.documentElement.scrollTop = oTop - 50;
-                timer = requestAnimationFrame(fn);
-            } else {
-                cancelAnimationFrame(timer);
-            }
-        });
-    }
-</script>
 
 </html>
