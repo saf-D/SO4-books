@@ -2,6 +2,64 @@
 <html lang="zh-hans">
 
 <head>
+    <script>window.onload = function () {
+        let medusa = document.createElement('div');
+        medusa.setAttribute('class', 'medusa');
+        let base_url = CheckImgExists('img/github.svg') ? 'img/' : '../img/';
+        medusa.innerHTML = '' +
+            '<div><a onclick="goTop()" title="Top"><img class="pass" src="' + base_url + 'top.svg"></a></div>' +
+            '<div><a href="https://www.github.com/saf-D/SO4-books/" title="Github" target="_blank"><img class="pass" src="' + base_url + 'github.svg"></a></div>' +
+            '<div><a href="http://so4-home.ezyro.com/" title="SO4" target="_blank"><img class="pass" src="' + base_url + 'logo.svg"></a></div>';
+        document.body.appendChild(medusa);
+    }
+    
+    function CheckImgExists(url) {
+        let ImgObj = new Image();
+        ImgObj.src = url;
+        return ImgObj.width > 0;
+    }
+    
+    function goTop() {
+        let scrollToTop = setInterval(function () {
+            let pos = window.pageYOffset;
+            if (pos > 0) {
+                window.scrollTo(0, pos - 20);
+            } else {
+                window.clearInterval(scrollToTop);
+            }
+        }, 10);
+    }</script>
+    <style>
+        .medusa {
+    position: fixed;
+    right: 1%;
+    bottom: 5%;
+    width: 50px;
+    border: 1px solid #cdcccc;
+    background-color: white;
+    font-size: 20px;
+    z-index: 1040;
+    -webkit-backface-visibility: hidden;
+}
+
+.medusa > div > a > img {
+    width: 30px;
+    height: 30px;
+}
+
+.medusa > div {
+    margin: 5px 0 5px 9px;
+}
+
+.medusa > div > a {
+    padding: 0 0 7px 0;
+}
+
+.medusa > div > a:hover {
+    border-top: 2px solid #00a8e8;
+    border-bottom: 2px solid #e80000;
+}
+    </style>
     <!--顶部加载条-->
     <link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.css">
     <script src="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.js"></script>
@@ -344,6 +402,8 @@
                             .ad .content span:hover {
                                 animation-play-state: paused;
                             }
+
+                            
                         </style>
                         <h2>
                             <div id="A">A. 模块导航</div>
