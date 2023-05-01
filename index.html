@@ -262,6 +262,83 @@
 
                 <article id="page">
                     <div class="article-container">
+                        <div class='ad'>
+                            <i class="iconfont">&#xe633;</i>
+                            <p class='content'>
+                                <span>重要通知：掘金创作者服务中心上线，速度过来体验一下吧！ </span>
+                            </p>
+                        </div>
+                        <style>
+                        html,
+                        body {
+                          width: 100%;
+                          height: 100%;
+                        }
+                        
+                        @font-face {
+                          font-family: "iconfont";
+                          /* Project id 2516453 */
+                          src: url("//at.alicdn.com/t/font_2516453_g6qjhhqblt9.woff2?t=1620545333370") format("woff2"), url("//at.alicdn.com/t/font_2516453_g6qjhhqblt9.woff?t=1620545333370") format("woff"), url("//at.alicdn.com/t/font_2516453_g6qjhhqblt9.ttf?t=1620545333370") format("truetype");
+                        }
+                        .iconfont {
+                          font-family: "iconfont" !important;
+                          font-size: 16px;
+                          font-style: normal;
+                          -webkit-font-smoothing: antialiased;
+                          -webkit-text-stroke-width: 0.2px;
+                          -moz-osx-font-smoothing: grayscale;
+                        }
+                        
+                        .ad {
+                          width: 400px;
+                          height: 60xp;
+                          background-color: #fff;
+                          align-items: center;
+                          display: flex;
+                          border-radius: 8px;
+                          box-sizing: border-box;
+                          height: 56px;
+                          margin-bottom: 24px;
+                          padding: 0 20px;
+                          display: flex;
+                          align-items: center;
+                          justify-content: flex-start;
+                          font-size: 16px;
+                          color: #353535;
+                          margin-bottom: 30px;
+                          cursor: pointer;
+                          box-shadow: 2px 1px 8px 1px #e4e8eb;
+                          margin: 40px auto;
+                        }
+                        .ad i {
+                          color: #ff6146;
+                          font-size: 20px;
+                          margin-right: 10px;
+                        }
+                        @keyframes marquee {
+                          0% {
+                            transform: translateX(0);
+                          }
+                          100% {
+                            transform: translateX(-100%);
+                          }
+                        }
+                        .ad .content {
+                          flex: 1;
+                          overflow: hidden;
+                        }
+                        .ad .content span {
+                          display: block;
+                          width: auto;
+                          white-space: nowrap;
+                          animation: marquee 30s linear infinite;
+                          padding-left: 105%;
+                          padding-right: 120%;
+                        }
+                        .ad .content span:hover {
+                          animation-play-state: paused;
+                        }
+                        </style>
                         <h2>
                             <div id="A">A. 模块导航</div>
                         </h2>
