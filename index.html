@@ -312,6 +312,244 @@
                         </div>
                     </div>
 
+                    <div class="card-widget card-announcement">
+                        <div class="card-content">
+                            <style>
+                                * {
+                                  padding: 0;
+                                  margin: 0;
+                                  box-sizing: border-box;
+                                }
+                            
+                                .banner_container {
+                                  position: relative;
+                                  margin: 100px;
+                                  width: 400px;
+                                  height: 250px;
+                                  /* 超出隐藏 */
+                                  overflow: hidden;
+                                }
+                            
+                                ul.img_box {
+                                  position: absolute;
+                                  left: 0;
+                                  top: 0;
+                                  /* html中的第一张图片不是我们想要显示，第二张才是我们轮播图的第一张图片因此要让这排图片往左移动一张图片的距离 */
+                                  transform: translateX(-400px);
+                                }
+                            
+                                .img_box li {
+                                  float: left;
+                                  list-style: none;
+                                }
+                            
+                                /* 图片大小 */
+                                .img_box li img {
+                                  width: 400px;
+                                }
+                            
+                                /* 小圆点 */
+                                .sel_box {
+                                  position: absolute;
+                                  bottom: 15px;
+                                  left: 50%;
+                                  transform: translateX(-50%);
+                                }
+                            
+                                .sel_box li {
+                                  list-style: none;
+                                  /* 转换为行内块元素 -- 一行显示 */
+                                  display: inline-block;
+                                  width: 10px;
+                                  height: 10px;
+                                  background-color: pink;
+                                  margin-right: 3px;
+                                  border-radius: 5px;
+                                  transition: all 0.4s;
+                                }
+                            
+                                /* 左箭头 */
+                                .left_btn {
+                                  position: absolute;
+                                  top: 50%;
+                                  left: 0;
+                                  transform: translateY(-50%);
+                                  width: 25px;
+                                  height: 30px;
+                                  background-color: #fff;
+                                  line-height: 30px;
+                                  padding-left: 3px;
+                                  /* 将鼠标样式改为小手 */
+                                  cursor: pointer;
+                                }
+                            
+                                .right_btn {
+                                  position: absolute;
+                                  top: 50%;
+                                  left: 375px;
+                                  transform: translateY(-50%);
+                                  width: 25px;
+                                  height: 30px;
+                                  background-color: #fff;
+                                  line-height: 30px;
+                                  padding-left: 5px;
+                                  cursor: pointer;
+                                }
+                            
+                            
+                                /* 当前图片的小图点样式 */
+                                .sel_box .cur {
+                                  background-color: red !important;
+                                  transform: scale(1.3);
+                                }
+                              </style>
+                              <div class="banner_container">
+                                <!-- 6张图片 -->
+                                <ul class="img_box">
+                                  <li><img src="read1.png" alt="5"></li>
+                                  <li><img src="read2.png" alt="5"></li>
+                                  <li><img src="read3.png" alt="4"></li>
+                                  <li><img src="read4.png" alt="3"></li>
+                                  <li><img src="read5.webp" alt="2"></li>
+                                  <li><img src="read3.png" alt="1"></li>
+                                </ul>
+                            
+                                <!-- 中间圆点 -->
+                                <ul class="sel_box">
+                                  <!-- 自定义属性 -->
+                                  <li data-index="0"></li>
+                                  <li data-index="1"></li>
+                                  <li data-index="2"></li>
+                                  <li data-index="3"></li>
+                                </ul>
+                            
+                                <!-- 左箭头 -->
+                                <div class="left_btn">&lt;</div>
+                                <!-- 右箭头 -->
+                                <div class="right_btn">&gt;</div>
+                              </div>
+                            
+                              <!-- 引入js代码 -->
+                              <script>
+                                let img_box = document.querySelector('.img_box');
+                            let imgs = document.querySelectorAll('img');
+                            let sel_box = document.querySelector('.sel_box')
+                            let lis = sel_box.querySelectorAll('li');
+                            let left_btn = document.querySelector('.left_btn');
+                            let right_btn = document.querySelector('.right_btn');
+                            // 记录第几张图片
+                            let index = 0;  
+                            let timer = null;  // 定时器
+                            // 设置图片容器大小
+                            // imgContainerW：img_box本身宽度，为400
+                            let imgContainerW = img_box.offsetWidth
+                            img_box.style.width = imgContainerW * imgs.length + 'px'
+                            // 设置容器位置
+                            img_box.style.left = 0 + 'px';
+                            
+                            // 设置第一个小图片作为当前按钮
+                            lis[0].className = 'cur'
+                            function swapImg() {
+                                // 修改img_box的定位，往左偏移 index * imgContainerW
+                                img_box.style.left = -index * imgContainerW + 'px';
+                                // 排他算法
+                                for (let i = 0; i < lis.length; i++) {
+                                    lis[i].className = '';
+                                }
+                                // 修改小图标的样式
+                                lis[index].className = 'cur'
+                            }
+                            function swapFormat() {
+                                index++;  // 进入下一张图片
+                                // 如果是在最后一张图片
+                                if (index >= 4) {
+                                    // 此处是为了防止频繁点击按钮，index++，导致index超过4，变成5、6、7...
+                                    // 当index>=4，我们强行让其等于4,类似防抖
+                                    index = 4;  
+                                    img_box.style.transition = 'all, linear, 1s';
+                                    img_box.style.left = -index * imgContainerW + 'px';
+                                    for (let i = 0; i < lis.length; i++) {
+                                        lis[i].className = '';
+                                    }
+                                    // 修改小图标的样式
+                                    lis[0].className = 'cur'
+                                
+                                    // 此处就是我们为实现无缝轮播，做的手脚 
+                                    // 通过延时定时器，当图片过渡完，立刻马上切换到第一张图片
+                                    setTimeout(function() {
+                                        index = 0;  // 第一张图片
+                                        img_box.style.transition = '';  // 无过度
+                                        swapImg();
+                                    }, 1500)
+                                
+                                    // 如果是其它图片，正常过渡切换
+                                } else {
+                                    img_box.style.transition = 'all, linear, 1.5s';
+                                    swapImg();
+                                }
+                            }
+                            // 添加定时器，调用函数
+                            timer = setInterval(swapFormat, 3000)
+                            // 点击右箭头，图片移动方式与自动播放一样
+                            right_btn.addEventListener('click', function() {
+                                swapFormat();
+                            })  
+                            // 点击左箭头
+                            left_btn.addEventListener('click', function() {
+                                index--;
+                                // 如果要切换到第四章
+                                if (index < 0) {
+                                    index = -1
+                                    img_box.style.transition = 'all, linear, 1.5s';
+                                    img_box.style.left = -index * imgContainerW + 'px';
+                                    for (let i = 0; i < lis.length; i++) {
+                                        lis[i].className = '';
+                                    }
+                                    // 修改小图标的样式
+                                    lis[3].className = 'cur'
+                                
+                                    // "出老千",迅速切换
+                                    setTimeout(function() {
+                                        index = 3
+                                        img_box.style.transition = '';
+                                        swapImg();
+                                    }, 1000)
+                                
+                                } else {
+                                    img_box.style.transition = 'all, linear, 1.5s';
+                                    swapImg();
+                                }
+                            })
+                            // 当鼠标在图片上、左箭头、右箭头时清除定时器，即图片不轮播
+                            img_box.addEventListener('mouseover', function() {
+                                clearInterval(timer)
+                            })
+                            
+                            right_btn.addEventListener('mouseover', function() {
+                                clearInterval(timer)
+                            })
+                            
+                            left_btn.addEventListener('mouseover', function() {
+                                clearInterval(timer)
+                            })
+                            
+                            // 当鼠标离开图片、左箭头、右箭头时开启定时器，即图片继续轮播
+                            img_box.addEventListener('mouseout', function() {
+                                timer = setInterval(swapFormat, 3000)
+                            })
+                            
+                            left_btn.addEventListener('mouseout', function() {
+                                timer = setInterval(swapFormat, 3000)
+                            })
+                            
+                            right_btn.addEventListener('mouseout', function() {
+                                timer = setInterval(swapFormat, 3000)
+                            })
+                              </script>
+                        </div>
+                    </div>
+
+
                 </div>
 
                 <article id="page">
