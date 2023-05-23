@@ -2,59 +2,59 @@
 <html lang="zh-hans">
 
 <head>
-    <script>window.onload = function () {
-        let medusa = document.createElement('div');
-        medusa.setAttribute('class', 'medusa');
-        medusa.innerHTML = '' +
-            '<div><a onclick="goTop()" title="Top"><img class="pass" src="../imgs/top.png"></a></div>' +
-            '<div><a href="http://www.github.com/saf-D/SO4-books/" title="Github" target="_blank"><img class="pass" src="../imgs/github.png"></a></div>' +
-            '<div><a href="https://so4.mysxl.cn/" title="反馈" target="_blank"><img class="pass" src="../imgs/msg.png"></a></div>';
-        document.body.appendChild(medusa);
-    }
-    
-    function CheckImgExists(url) {
-        let ImgObj = new Image();
-        ImgObj.src = url;
-        return ImgObj.width > 0;
-    }
-    
-    function goTop() {
-        let scrollToTop = setInterval(function () {
-            let pos = window.pageYOffset;
-            if (pos > 0) {
-                window.scrollTo(0, pos - 20);
-            } else {
-                window.clearInterval(scrollToTop);
-            }
-        }, 10);
-    }</script>
+    <script>
+        window.onload = function () {
+            let medusa = document.createElement('div');
+            medusa.setAttribute('class', 'medusa');
+            medusa.innerHTML = '' +
+                '<div><a onclick="goTop()" title="Top"><img class="pass" src="../imgs/top.png"></a></div>' +
+                '<div><a href="http://www.github.com/saf-D/SO4-books/" title="Github" target="_blank"><img class="pass" src="../imgs/github.png"></a></div>' +
+                '<div><a href="https://so4.mysxl.cn/" title="反馈" target="_blank"><img class="pass" src="../imgs/msg.png"></a></div>';
+            document.body.appendChild(medusa);
+        }
+
+        function CheckImgExists(url) {
+            let ImgObj = new Image();
+            ImgObj.src = url;
+            return ImgObj.width > 0;
+        }
+
+        function goTop() {
+            let scrollToTop = setInterval(function () {
+                let pos = window.pageYOffset;
+                if (pos > 0) {
+                    window.scrollTo(0, pos - 20);
+                } else {
+                    window.clearInterval(scrollToTop);
+                }
+            }, 10);
+        }
+    </script>
     <style>
         .medusa {
-    position: fixed;
-    right: 1%;
-    bottom: 5%;
-    width: 50px;
-    border: 1px solid #cdcccc;
-    background-color: white;
-    font-size: 20px;
-    z-index: 1040;
-    -webkit-backface-visibility: hidden;
-}
+            position: fixed;
+            right: 1%;
+            bottom: 5%;
+            width: 50px;
+            border: 1px solid #cdcccc;
+            background-color: white;
+            font-size: 20px;
+            z-index: 1040;
+            -webkit-backface-visibility: hidden;
+        }
 
-.medusa > div > a > img {
-    width: 30px;
-    height: 30px;
-}
+        .medusa>div>a>img {
+            width: 30px;
+            height: 30px;
+        }
 
-.medusa > div {
-    margin: 5px 0 5px 9px;
-}
+        .medusa>div {
+            margin: 5px 0 5px 9px;
+        }
 
-.medusa > div > a {
-    padding: 0 0 7px 0;
-}
-
-
+        .medusa>div>a {
+            padding: 0 0 7px 0;
+        }
     </style>
     <!--顶部加载条-->
     <link rel="stylesheet" href="https://blog-static.cnblogs.com/files/zouwangblog/nprogress.css">
@@ -309,10 +309,99 @@
 
 
                             <img src="https://tool.lu/netcard/" />
+                            <!-- <iframe src="http://mxq.scxc.ink/one/one.html" width="332"  height="206" name="abc"></iframe> -->
+                        </div>
+                    </div>
+                    <div class="card-widget card-announcement">
+                        <div class="card-content">
+                            <div class="item-headline">
+                                <span>工具箱 (大多为其他大佬开发的, 技术可能不成熟)</span>
+                            </div>
+                            <style>
+                                /* 遮罩层 */
+                                #overlay {
+                                    position: fixed;
+                                    left: 0px;
+                                    top: 0px;
+                                    width: 100%;
+                                    height: 100%;
+                                    font-size: 16px;
+                                    /* IE9以下不支持rgba模式 */
+                                    background-color: rgba(0, 0, 0, 0.5);
+                                    /* 兼容IE8及以下 */
+                                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000, endColorstr=#7f000000);
+                                    display: none;
+                                }   
+
+                                /* 弹出框主体 */
+                                .popup {
+                                    background-color: #ffffff;
+                                    max-width: 800px;
+                                    min-width: 200px;
+                                    height: 450px;
+                                    border-radius: 5px;
+                                    margin: 100px auto;
+                                    text-align: center;
+                                }
+
+                                /* 弹出框的标题 */
+                                .popup_title {
+                                    height: 60px;
+                                    line-height: 60px;
+                                    border-bottom: solid 1px #cccccc;
+                                }
+
+                                /* 弹出框的内容 */
+                                .popup_content {
+                                    height: 50px;
+                                    line-height: 100px;
+                                    padding: 15px 20px;
+                                }
+
+                                /* 弹出框的按钮栏 */
+                                .popup_btn {
+                                    padding-bottom: 10px;
+                                }
+
+                                /* 弹出框的按钮 */
+                                .popup_btn button {
+                                    color: #778899;
+                                    width: 40%;
+                                    height: 40px;
+                                    cursor: pointer;
+                                    border: solid 1px #cccccc;
+                                    border-radius: 5px;
+                                    margin: 5px 10px;
+                                    color: #ffffff;
+                                    background-color: #337ab7;
+                                }
+                            </style>
+                            <script>
+                                function showPopup() {
+                                    var overlay = document.getElementById("overlay");
+                                    overlay.style.display = "block";
+                                }
+
+                                function hidePopup() {
+                                    var overlay = document.getElementById("overlay");
+                                    overlay.style.display = "none";
+                                }
+                            </script>
+                            <button id="showPopup" onclick="showPopup()">Lians灵感</button>
+                            <div id="overlay">
+                                <div class="popup">
+                                    <p class="popup_title">Lians灵感(依次点击 [回到社区] - [关闭弹窗] - 往下翻 - [科米百答] 即可享受GPT-3.5-Turbo! )</p>
+                                    <iframe src="https://mxq.scxc.ink/lians/index.html" height="300px" width="600px"></iframe>
+                                    <div class="popup_btn">
+                                        <button class="confirmBtn" onclick="hidePopup()">关闭</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="https://new-bing.vercel.app/" target="_blank"><button>SO4NewBing</button></a>
+                            
                         </div>
                     </div>
 
-                    
 
 
                 </div>
@@ -322,7 +411,8 @@
                         <div class='ad'>
                             <i class="iconfont">&#xe633;</i>
                             <p class='content'>
-                                <span>[『Cloudflare』https://so4-books.pages.dev/]这个通道刚被攻击, 会很卡顿, 请使用其他通道访问此站点qwq, 若持续攻击几天, 会更换域名! </span>
+                                <span>[『Cloudflare』https://so4-books.pages.dev/]这个通道刚被攻击, 会很卡顿, 请使用其他通道访问此站点qwq,
+                                    若持续攻击几天, 会更换域名! </span>
                             </p>
                         </div>
                         <style>
@@ -401,8 +491,6 @@
                             .ad .content span:hover {
                                 animation-play-state: paused;
                             }
-
-                            
                         </style>
                         <h2>
                             <div id="A">A. 模块导航</div>
@@ -582,8 +670,6 @@
                         </h2>
                         <div class="tool">
                             <ul>
-                                <li>萌备案</li>
-                                <br>
                                 <li>黑暗、护眼模式</li>
                                 <br>
                                 <li>更好看的主题</li>
@@ -592,7 +678,9 @@
                                 <br>
                                 <li>赞赏名单</li>
                                 <br>
-                                <li>banner</li>
+                                <li>工具箱</li>
+                                <br>
+                                <li><del>萌备案</del></li>
                                 <br>
                                 <li><del>一键回到顶部</del></li>
                                 <br>
@@ -629,7 +717,15 @@
         </main>
         <footer id="footer">
             <div id="footer-wrap">
-                <div class="copyright">Copyright &copy;2023 BY SO4. All Rights Reserved.<br><div style="white-space:nowrap;"><img src="https://ecy.best/d/%E4%BB%93%E5%BA%933-Onedrive(Public)/images/icp/ico64.png?sign=iwcHpCv3yhattzNn_sowKtaguTlDwGB39tdOo-QM0uc=:0" style="width:22px;height:22px"><a href="https://icp.gov.moe/?keyword=20238990" target='_blank'>萌ICP备20238990号</a></div><br><a href="https://ipw.cn/ipv6webcheck/?site=so4-books.pages.dev" title="本站支持IPv6访问" target='_blank'><img style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问" src="https://static.ipw.cn/icon/ipv6-s4.svg"></a></div>
+                <div class="copyright">Copyright &copy;2023 BY SO4. All Rights Reserved.<br>
+                    <div style="white-space:nowrap;"><img
+                            src="https://ecy.best/d/%E4%BB%93%E5%BA%933-Onedrive(Public)/images/icp/ico64.png?sign=iwcHpCv3yhattzNn_sowKtaguTlDwGB39tdOo-QM0uc=:0"
+                            style="width:22px;height:22px"><a href="https://icp.gov.moe/?keyword=20238990"
+                            target='_blank'>萌ICP备20238990号</a></div><br><a
+                        href="https://ipw.cn/ipv6webcheck/?site=so4-books.pages.dev" title="本站支持IPv6访问"
+                        target='_blank'><img style='display:inline-block;vertical-align:middle' alt="本站支持IPv6访问"
+                            src="https://static.ipw.cn/icon/ipv6-s4.svg"></a>
+                </div>
             </div>
         </footer>
     </div>
